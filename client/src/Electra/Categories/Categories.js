@@ -2,51 +2,51 @@ import { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import { useHistory ,NavLink} from 'react-router-dom'
+import { useHistory, NavLink } from 'react-router-dom';
 
-//reutrn dropdown of all categories
-const Categoties = () => {
+// return dropdown of all categories
+const Categories = () => {
 
   const CategoriesNames = [
     {
       id: 1,
       name: 'refrigerators',
-      category: 'מקררים ומקפיאים'
+      category: 'Refrigerators and Freezers'
     },
     {
       id: 2,
       name: 'computers',
-      category: 'מחשבים ותקשורת'
+      category: 'Computers and Communication'
     },
     {
       id: 3,
       name: 'washings',
-      category: 'כביסה וייבוש'
+      category: 'Laundry and Drying'
     },
     {
       id: 4,
       name: 'cosmetics',
-      category: 'מוצרי טיפוח ועיצוב'
+      category: 'Grooming and Styling Products'
     },
     {
       id: 5,
       name: 'kitchen',
-      category: 'חשמל למטבח'
+      category: 'Kitchen Appliances'
     },
     {
       id: 6,
       name: 'ovens',
-      category: 'תנורים וכיריים'
+      category: 'Ovens and Stovetops'
     },
     {
-      id: 6,
+      id: 7,
       name: 'airConditioners',
-      category: 'מזגנים ומאוררים'
+      category: 'Air Conditioners and Fans'
     },
   ]
 
   const [anchorEl, setAnchorEl] = useState(null);
-  const history = useHistory()
+  const history = useHistory();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -58,8 +58,15 @@ const Categoties = () => {
 
   return (
     <div>
-      <Button aria-controls="simple-menu" variant="outlined" color="secondary" aria-haspopup="true" onClick={handleClick} style={{marginLeft:'190%', fontSize:'20px', width:'120%', color:'yellow'}}>
-        קטגוריות מוצרים
+      <Button 
+        aria-controls="simple-menu" 
+        variant="outlined" 
+        color="secondary" 
+        aria-haspopup="true" 
+        onClick={handleClick} 
+        style={{ fontSize: '15px', color: 'yellow' }}
+      >
+        Product Categories
       </Button>
       <Menu
         id="simple-menu"
@@ -69,11 +76,13 @@ const Categoties = () => {
         onClose={handleClose}
       >
         {CategoriesNames.map((i) => (
-        <MenuItem key={i.id} style={{borderColor:'yellow', fontSize:'18px'}} component={NavLink} to={`/items/${i.name}`}>{i.category}</MenuItem>
-      ))}
+          <MenuItem key={i.id} style={{ borderColor: 'yellow', fontSize: '18px' }} component={NavLink} to={`/items/${i.name}`}>
+            {i.category}
+          </MenuItem>
+        ))}
       </Menu>
     </div>
   );
 }
 
-export default Categoties
+export default Categories;

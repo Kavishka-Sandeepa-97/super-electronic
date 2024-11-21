@@ -8,10 +8,13 @@
 }
 
 .OverHeader {   
-  text-align: center;
+  padding-left: 25px;
   background-color: rgb(255, 240, 24);
   font-size: 20px;
   font-weight: bold;
+  display: flex;
+  gap: 150px;
+  align-items: center;
 }
 
 .header {

@@ -10,6 +10,8 @@ import Error from "./Error/Error";
 import Branches from "./Electra/Branches/Branches";
 import Header from './Electra/Header/Header';
 import Caruosel from './Electra/Caruosel/Caruosel';
+import ProductList from './Electra/Components/Product/ProductList';
+import Footer from './Electra/Components/Footer/Footer';
 
 function App() {
 
@@ -40,7 +42,12 @@ function App() {
     <UserContext.Provider value={values}>
       <Header />
       <Switch>
-        <Route exact component={Caruosel} path='/' />
+        <Route exact render={() => (
+              <>
+                <Caruosel />
+                <ProductList />
+              </>
+            )} path='/' />
         <Route component={Paypal} path='/Cart/paypal' />
         <Route component={Cart} path='/Cart' />
         <Route component={Items} path='/items/:name' />
@@ -49,6 +56,7 @@ function App() {
         <Route component={() => <MyForm type={'forgetPassword'} />} path='/forgotPassword' />
         <Route component= {Error} />
       </Switch>
+      <Footer></Footer>
     </UserContext.Provider >
   )
 }
